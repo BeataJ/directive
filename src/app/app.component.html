@@ -9,12 +9,17 @@
         <div *ngIf="onlyOdd">
           <li
             class="list-group-item"
-            *ngFor="let odd of oddNumbers">
+            *ngFor="let odd of oddNumbers"
+            [ngClass]="{odd: odd % 2 !== 0}"
+            [ngStyle]="{background: odd % 2 !== 0 ? 'grey' : 'yellow'}"
+            >
             {{ odd }}
           </li>
         </div>
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item" *ngFor="let event of eventNumbers">
+          <li class="list-group-item" *ngFor="let event of eventNumbers"
+          [ngStyle]="{background: event % 2 !== 0 ? 'grey' : 'yellow'}"
+          >
             {{ event }}
           </li>
         </div>
