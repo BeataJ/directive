@@ -17,8 +17,10 @@
             {{ odd }}
           </li>
         </div>
-        <div *ngIf="!onlyOdd">
-          <li class="list-group-item" *ngFor="let event of eventNumbers"
+        <!-- <div *ngIf="!onlyOdd">
+          <li class="list-group-item" 
+          *ngFor="let event of eventNumbers"
+          [ngClass]="{odd: event % 2 !== 0}"
           [ngStyle]="{background: event % 2 !== 0 ? 'grey' : 'yellow'}"
           >
             {{ event }}
@@ -31,7 +33,14 @@
               {{ odd }}
             </li>
           </div>
-        </ng-template>
+        </ng-template> -->
+        <div *appUnless="onlyOdd">
+          <li class="list-group-item" *ngFor="let event of eventNumbers"
+          [ngClass]="{odd: event % 2 !== 0}"
+            [ngStyle]="{background: event % 2 !== 0 ? 'grey' : 'yellow'}">
+            {{ event }}
+          </li>
+        </div>
       </ul>
       <p appBasicHighlight>Style me with basic directive</p>
       <p appBetterHighlight [defaultColor]="'yellow'" [colorH]="'purple'" >Style me with better directive</p>
